@@ -1,0 +1,52 @@
+{
+  "name": "Infotack",
+  "version": "1.0.0",
+  "description": "Security-focused browser with OSINT and penetration testing tools",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "scripts": {
+    "dev": "concurrently \"npm run react-dev\" \"npm run electron-dev\"",
+    "react-dev": "vite",
+    "electron-dev": "wait-on http://localhost:5173 && VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "build": "vite build && electron-builder",
+    "start": "electron .",
+    "dist": "vite build && electron-builder --publish never"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "better-sqlite3": "^12.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "leaflet": "^1.9.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "zustand": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.0",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^5.0.0",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.infotack.browser",
+    "productName": "Infotack",
+    "files": [
+      "dist",
+      "electron",
+      "node_modules"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}

@@ -1,0 +1,596 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #05070f;
+  --surface: #0b111e;
+  --surface-dark: #080c15;
+  --surface-light: #151c2b;
+  --text: #f5f7fb;
+  --text-bright: #ffffff;
+  --muted: #97a0b8;
+  --muted-dark: #8088a0;
+  --accent: #64d5ff;
+  --accent-strong: #4cc2ef;
+  --accent-soft: rgba(100, 213, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --shadow-soft: 0 25px 60px rgba(5, 7, 19, 0.6);
+  --shadow-card: 0 35px 80px rgba(3, 7, 18, 0.55);
+  --scrollbar-track: #090c14;
+  --scrollbar-thumb: #2b3347;
+  --scrollbar-thumb-hover: #3a455f;
+}
+
+.theme-light {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-dark: #eef0f7;
+  --surface-light: #f8f9fd;
+  --text: #101828;
+  --text-bright: #0f172a;
+  --muted: #5d6475;
+  --muted-dark: #4b5563;
+  --accent: #2563eb;
+  --accent-strong: #1e40af;
+  --accent-soft: rgba(37, 99, 235, 0.12);
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.15);
+  --shadow-soft: 0 15px 35px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 30px 75px rgba(15, 23, 42, 0.12);
+  --scrollbar-track: #e5e7eb;
+  --scrollbar-thumb: #cbd5f5;
+  --scrollbar-thumb-hover: #9ca3af;
+}
+
+.theme-dark {
+  --bg: #05070f;
+  --surface: #0b111e;
+  --surface-dark: #080c15;
+  --surface-light: #151c2b;
+  --text: #f5f7fb;
+  --text-bright: #ffffff;
+  --muted: #97a0b8;
+  --muted-dark: #8088a0;
+  --accent: #64d5ff;
+  --accent-strong: #4cc2ef;
+  --accent-soft: rgba(100, 213, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --shadow-soft: 0 25px 60px rgba(5, 7, 19, 0.6);
+  --shadow-card: 0 35px 80px rgba(3, 7, 18, 0.55);
+  --scrollbar-track: #090c14;
+  --scrollbar-thumb: #2b3347;
+  --scrollbar-thumb-hover: #3a455f;
+}
+
+.theme-black {
+  --bg: #000000;
+  --surface: #020202;
+  --surface-dark: #010101;
+  --surface-light: #0b0b0b;
+  --text: #f0f0f0;
+  --text-bright: #ffffff;
+  --muted: #aaaaaa;
+  --muted-dark: #7a7a7a;
+  --accent: #00f7ff;
+  --accent-strong: #00d5dd;
+  --accent-soft: rgba(0, 247, 255, 0.18);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --shadow-soft: 0 30px 60px rgba(0, 0, 0, 0.65);
+  --shadow-card: 0 35px 90px rgba(0, 0, 0, 0.75);
+  --scrollbar-track: #050505;
+  --scrollbar-thumb: #272727;
+  --scrollbar-thumb-hover: #3d3d3d;
+}
+
+.theme-solarized {
+  --bg: #fdf6e3;
+  --surface: #f8efdb;
+  --surface-dark: #eee4c9;
+  --surface-light: #fdf3dd;
+  --text: #073642;
+  --text-bright: #052431;
+  --muted: #5f6d73;
+  --muted-dark: #4e5c61;
+  --accent: #b58900;
+  --accent-strong: #9d7700;
+  --accent-soft: rgba(181, 137, 0, 0.2);
+  --border: rgba(7, 54, 66, 0.18);
+  --border-strong: rgba(7, 54, 66, 0.28);
+  --shadow-soft: 0 20px 55px rgba(7, 54, 66, 0.18);
+  --shadow-card: 0 30px 90px rgba(7, 54, 66, 0.22);
+  --scrollbar-track: #efe8d6;
+  --scrollbar-thumb: #ccb98c;
+  --scrollbar-thumb-hover: #c09f5d;
+}
+
+html {
+  transition: background-color 0.28s ease, color 0.28s ease;
+}
+
+body {
+  background: radial-gradient(circle at 15% 20%, rgba(100, 213, 255, 0.12), transparent 45%), radial-gradient(circle at 85% 0%, rgba(76, 194, 239, 0.15), transparent 35%), var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-feature-settings: "lnum" 1, "calt" 1;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  transition: background-color 0.28s ease, color 0.28s ease;
+  min-height: 100vh;
+}
+
+.theme-transition {
+  transition: background-color 0.28s ease, color 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--text-bright);
+}
+
+/* Utility helpers for expressive surfaces */
+.surface-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.surface-card {
+  background: var(--surface-light);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.surface-muted {
+  background: var(--surface-dark);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 0.75rem;
+}
+
+.text-muted {
+  color: var(--muted) !important;
+}
+
+.text-muted-dark {
+  color: var(--muted-dark) !important;
+}
+
+.border-strong {
+  border-color: var(--border-strong) !important;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+}
+
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(100, 213, 255, 0.25);
+}
+
+/* Tailwind override helpers */
+[class*="bg-gray-"] {
+  background-color: var(--surface) !important;
+}
+
+.bg-gray-800,
+[class*="bg-gray-800"] {
+  background-color: var(--surface-dark) !important;
+}
+
+.bg-gray-900,
+[class*="bg-gray-900"] {
+  background-color: var(--surface-dark) !important;
+}
+
+.bg-gray-950,
+[class*="bg-gray-950"] {
+  background-color: var(--bg) !important;
+}
+
+.bg-dark-surface {
+  background-color: var(--surface-dark) !important;
+}
+
+[class*="text-gray-"] {
+  color: var(--muted) !important;
+}
+
+.text-gray-100,
+.text-gray-200,
+.text-gray-300,
+[class*="text-gray-100"],
+[class*="text-gray-200"],
+[class*="text-gray-300"] {
+  color: var(--text) !important;
+}
+
+.text-gray-400,
+.text-gray-500,
+[class*="text-gray-400"],
+[class*="text-gray-500"] {
+  color: var(--muted) !important;
+}
+
+.text-white,
+[class*="text-white"] {
+  color: var(--text-bright) !important;
+}
+
+/* Класс для текста, который адаптируется к темам */
+.text-text-bright {
+  color: var(--text-bright) !important;
+}
+
+/* Исправление для светлых тем - белый текст должен быть темным */
+.theme-light .text-white,
+.theme-light [class*="text-white"],
+.theme-solarized .text-white,
+.theme-solarized [class*="text-white"] {
+  color: var(--text) !important;
+}
+
+/* Исправление для светлых тем - pre и code блоки */
+.theme-light pre,
+.theme-light code,
+.theme-solarized pre,
+.theme-solarized code {
+  color: var(--text) !important;
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+/* Исправление для светлых тем - полупрозрачный белый фон */
+.theme-light .bg-white\/5,
+.theme-light .bg-white\/10,
+.theme-light .bg-white\/20,
+.theme-solarized .bg-white\/5,
+.theme-solarized .bg-white\/10,
+.theme-solarized .bg-white\/20 {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+.theme-light .bg-white\/3,
+.theme-solarized .bg-white\/3 {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+
+/* Исправление для светлых тем - границы */
+.theme-light .border-white\/10,
+.theme-light .border-white\/20,
+.theme-solarized .border-white\/10,
+.theme-solarized .border-white\/20 {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Исправление для светлых тем - hover эффекты */
+.theme-light .hover\:bg-white\/5:hover,
+.theme-light .hover\:bg-white\/10:hover,
+.theme-solarized .hover\:bg-white\/5:hover,
+.theme-solarized .hover\:bg-white\/10:hover {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Плавные анимации для всех интерактивных элементов */
+button, a, input, select, textarea {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Анимации для вкладок */
+.tab-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Анимации для появления контента */
+.tab-content-enter {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.tab-content-slide {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Улучшенный loading spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-dark) 0%,
+    var(--surface-light) 50%,
+    var(--surface-dark) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Плавные hover эффекты для карточек */
+.surface-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.surface-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card), 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Плавные переходы для всех элементов */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Исключения для анимаций */
+input, textarea, select, button, a {
+  transition-duration: 200ms;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+[class*="border-gray-"] {
+  border-color: var(--border) !important;
+}
+
+.text-blue-400,
+.text-cyan-400,
+.text-blue-500,
+.text-cyan-500,
+.text-blue-600,
+.text-cyan-600 {
+  color: var(--accent) !important;
+}
+
+.from-blue-400,
+.from-blue-600,
+.to-cyan-400,
+.to-cyan-600 {
+  --tw-gradient-from: var(--accent-strong) !important;
+  --tw-gradient-to: color-mix(in srgb, var(--accent) 70%, transparent) !important;
+}
+
+.btn-accent {
+  background: linear-gradient(120deg, var(--accent-strong), var(--accent));
+  color: var(--text-bright);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 45px rgba(100, 213, 255, 0.25);
+}
+
+a,
+.link {
+  color: var(--accent);
+  transition: color 0.28s ease;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent) 80%, white 20%);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Анимации для переходов между вкладками */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tab-content-enter {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.tab-content-slide {
+  animation: slideIn 0.25s ease-out;
+}
+
+/* Loading анимации */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 0.5rem;
+}
+
+/* Плавные переходы для кнопок вкладок */
+.tab-button {
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-button.active::after {
+  transform: scaleX(1);
+}
+
+.tab-button:hover {
+  transform: translateY(-1px);
+}
+
+.tab-button:active {
+  transform: translateY(0) scale(0.98);
+}
